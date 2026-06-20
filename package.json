@@ -6,15 +6,24 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "build": "astro build",
-    "preview": "astro preview --host 0.0.0.0",
+    "preview": "npm run build && wrangler dev",
     "validate:content": "node scripts/validate-content.mjs",
     "export:shopify": "node scripts/export-shopify.mjs",
-    "check": "npm run validate:content && npm run export:shopify && npm run build"
+    "check": "npm run validate:content && npm run export:shopify && npm run build",
+    "generate-types": "wrangler types",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.7.0",
     "@astrojs/sitemap": "^3.3.1",
     "astro": "^6.3.8",
     "gray-matter": "^4.0.3",
     "marked": "^15.0.12"
+  },
+  "devDependencies": {
+    "wrangler": "^4.103.0"
+  },
+  "overrides": {
+    "vite": "^7"
   }
 }
