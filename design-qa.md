@@ -12,16 +12,16 @@ Selected homepage direction:
 
 Reference image:
 
-- `design-reference-homepage.png`
+- `design-reference-homepage.webp`
 
 ## Implemented Checks
 
-- Desktop homepage uses `home-hero-desktop.png`.
-- Mobile homepage uses `home-hero-mobile.png`.
+- Desktop homepage uses `home-hero-desktop.webp`.
+- Mobile homepage uses `home-hero-mobile.webp`.
 - Service categories use separate generated images:
-  - `category-nails.png`
-  - `category-brows.png`
-  - `category-lips.png`
+  - `category-nails.webp`
+  - `category-brows.webp`
+  - `category-lips.webp`
 - Homepage first viewport shows `ทำเล็บ`, `สักคิ้ว`, and `สักปาก`.
 - Concern chips show `ราคา`, `เจ็บไหม`, `ดูแลหลังทำ`, `เลือกทรง`, `เลือกสี`, and `ความเสี่ยง`.
 - Desktop viewport `1440x1024` has no horizontal overflow.

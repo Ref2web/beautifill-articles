@@ -29,7 +29,7 @@ export const serviceLabels: Record<
     title: 'ทำเล็บ',
     category: 'nails',
     description: 'รวมบทความเรื่องการเลือกสี ทรง ความยาว ราคา การดูแล และความเสี่ยงก่อนทำเล็บ',
-    image: '/images/category-nails.png',
+    image: '/images/category-nails.webp',
     color: '#D9C06F',
     emptyTitle: 'ยังไม่มีบทความทำเล็บ',
     emptyDescription: 'หมวดนี้ถูกเตรียมไว้สำหรับบทความทำเล็บ'
@@ -38,7 +38,7 @@ export const serviceLabels: Record<
     title: 'สักคิ้ว',
     category: 'eyebrow-tattoo',
     description: 'รวมบทความเรื่องทรงคิ้ว ความเข้ากับหน้า ผลลัพธ์ธรรมชาติ ขั้นตอน ราคา และการดูแลก่อนตัดสินใจ',
-    image: '/images/category-brows.png',
+    image: '/images/category-brows.webp',
     color: '#6F7DD9',
     emptyTitle: 'ยังไม่มีบทความสักคิ้ว',
     emptyDescription: 'หมวดนี้ถูกเตรียมไว้แล้ว แต่ยังไม่มีบทความสักคิ้วที่เผยแพร่ในไฟล์ Markdown ตอนนี้'
@@ -47,7 +47,7 @@ export const serviceLabels: Record<
     title: 'สักปาก',
     category: 'lip-tattoo',
     description: 'รวมบทความเรื่องสีปากเดิม การเลือกสี ความคาดหวัง ขั้นตอน การดูแลหลังทำ และคำถามก่อนจอง',
-    image: '/images/category-lips.png',
+    image: '/images/category-lips.webp',
     color: '#6FD988',
     emptyTitle: 'ยังไม่มีบทความสักปาก',
     emptyDescription: 'หมวดนี้ถูกเตรียมไว้แล้ว แต่ยังไม่มีบทความสักปากที่เผยแพร่ในไฟล์ Markdown ตอนนี้'
@@ -58,26 +58,26 @@ export const topicLabels: Record<string, { title: string; description: string; i
   'gel-nails': {
     title: 'เล็บเจล',
     description: 'เลือกสี ทรง ความยาว และการดูแลเล็บเจลให้เหมาะกับชีวิตจริง',
-    image: '/images/thumbnail-nail-palette.png'
+    image: '/images/thumbnail-nail-palette.webp'
   },
   'nail-care': {
     title: 'ดูแลเล็บ',
     description: 'หลักคิดก่อนและหลังทำเล็บ เพื่อให้เล็บสวยโดยไม่ละเลยความสบาย',
-    image: '/images/thumbnail-nail-service.png'
+    image: '/images/thumbnail-nail-service.webp'
   },
   'nail-damage': {
     title: 'เล็บพัง เล็บบาง',
     description: 'สาเหตุที่ควรเช็ก วิธีคุยกับร้าน และสิ่งที่ไม่ควรฟันธงเกินหลักฐาน',
-    image: '/images/thumbnail-nail-service.png'
+    image: '/images/thumbnail-nail-service.webp'
   },
   'price-and-value': {
     title: 'ราคาและความคุ้มค่า',
     description: 'เข้าใจว่าราคาทำเล็บควรดูจากอะไร ไม่ใช่ดูถูกหรือแพงอย่างเดียว',
-    image: '/images/thumbnail-nail-tools.png'
+    image: '/images/thumbnail-nail-tools.webp'
   },
   'salon-checklist': {
     title: 'เลือกร้านทำเล็บ',
     description: 'เช็กมาตรฐาน กระบวนการ และคำถามที่ควรถามก่อนตัดสินใจ',
-    image: '/images/thumbnail-nail-tools.png'
+    image: '/images/thumbnail-nail-tools.webp'
   }
 };

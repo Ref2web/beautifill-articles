@@ -14,7 +14,7 @@ sourceRequired: false
 sources: []
 publishedAt: "2026-05-28"
 updatedAt: "2026-05-28"
-heroImage: "/images/hero-nails.png"
+heroImage: "/images/hero-nails.webp"
 imageAlt: "เล็บเจลสีชมพูบนมือผู้หญิง"
 shortFormRepurpose:
   - hook: "ลายนี้สวยในรูป แต่พิมพ์งานไหวไหม?"

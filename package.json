@@ -9,7 +9,7 @@
     "preview": "astro preview --host 0.0.0.0",
     "validate:content": "node scripts/validate-content.mjs",
     "export:shopify": "node scripts/export-shopify.mjs",
-    "check": "npm run validate:content && npm run build && npm run export:shopify"
+    "check": "npm run validate:content && npm run export:shopify && npm run build"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.3.1",

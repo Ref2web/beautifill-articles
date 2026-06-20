@@ -14,7 +14,7 @@ sourceRequired: false
 sources: []
 publishedAt: "2026-05-28"
 updatedAt: "2026-05-28"
-heroImage: "/images/thumbnail-nail-tools.png"
+heroImage: "/images/thumbnail-nail-tools.webp"
 imageAlt: "อุปกรณ์ทำเล็บที่จัดวางสะอาดบนโต๊ะ"
 shortFormRepurpose:
   - hook: "ร้านทำเล็บดี ดูจากอะไรนอกจากรูปผลงาน"

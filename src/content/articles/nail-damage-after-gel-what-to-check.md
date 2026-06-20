@@ -18,7 +18,7 @@ sources:
     url: "https://www.aad.org/public/everyday-care/nail-care-secrets/basics/gel-manicures"
 publishedAt: "2026-05-28"
 updatedAt: "2026-05-28"
-heroImage: "/images/thumbnail-nail-service.png"
+heroImage: "/images/thumbnail-nail-service.webp"
 imageAlt: "การดูแลเล็บในร้านทำเล็บ"
 shortFormRepurpose:
   - hook: "เล็บพัง อาจไม่ได้เริ่มจากสีเจล"

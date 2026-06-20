@@ -14,7 +14,7 @@ sourceRequired: false
 sources: []
 publishedAt: "2026-05-28"
 updatedAt: "2026-05-28"
-heroImage: "/images/thumbnail-nail-tools.png"
+heroImage: "/images/thumbnail-nail-tools.webp"
 imageAlt: "โต๊ะทำเล็บพร้อมสีและอุปกรณ์ในโทนชมพู"
 shortFormRepurpose:
   - hook: "99 บาทถูกจริงไหม หรือแค่ยังไม่รู้ว่ารวมอะไร"
