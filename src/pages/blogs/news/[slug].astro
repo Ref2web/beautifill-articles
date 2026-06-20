@@ -1,0 +1,94 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { site, topicLabels } from '../../../data/site';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.data.shopifyHandle },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const canonicalPath = `/blogs/news/${article.data.shopifyHandle}`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.data.title,
+  description: article.data.description,
+  image: new URL(article.data.heroImage, site.url).toString(),
+  datePublished: article.data.publishedAt,
+  dateModified: article.data.updatedAt,
+  author: {
+    '@type': 'Person',
+    name: 'Jup'
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Beautifill by Jup'
+  },
+  mainEntityOfPage: new URL(canonicalPath, site.url).toString()
+};
+---
+
+<BaseLayout
+  title={article.data.metaTitle}
+  description={article.data.metaDescription}
+  canonicalPath={canonicalPath}
+  image={article.data.heroImage}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <article class="article-page">
+    <header class="article-hero">
+      <div>
+        <a class="topic-link" href={`/topics/${article.data.topic}`}>{topicLabels[article.data.topic]?.title ?? article.data.topic}</a>
+        <h1>{article.data.title}</h1>
+        <p>{article.data.description}</p>
+        <div class="article-meta">
+          <span>{article.data.funnelStage}</span>
+          <span>{article.data.contentType}</span>
+          <span>อัปเดต {article.data.updatedAt}</span>
+        </div>
+      </div>
+      <img src={article.data.heroImage} alt={article.data.imageAlt} />
+    </header>
+
+    <div class="article-shell">
+      <aside class="article-sidebar">
+        <p class="sidebar-title">อ่านแล้วควรได้คำตอบ</p>
+        <ul>
+          <li>ควรเช็กอะไรกับตัวเองก่อนทำเล็บ</li>
+          <li>ควรถามร้านหรือช่างเรื่องอะไร</li>
+          <li>ควรปรับ reference ยังไงให้ใช้ชีวิตจริงได้</li>
+        </ul>
+        <a class="button secondary" href={`/topics/${article.data.topic}`}>อ่านหัวข้อนี้ต่อ</a>
+      </aside>
+      <div class="article-content">
+        <Content />
+
+        <section class="repurpose-box">
+          <h2>แตกเป็นคลิปสั้นได้ยังไง</h2>
+          <ul>
+            {article.data.shortFormRepurpose.map((item) => (
+              <li><strong>{item.format}:</strong> {item.hook}</li>
+            ))}
+          </ul>
+        </section>
+
+        {article.data.sources.length > 0 && (
+          <section class="sources-box">
+            <h2>แหล่งข้อมูล</h2>
+            <ol>
+              {article.data.sources.map((source) => (
+                <li><a href={source.url}>{source.title}</a></li>
+              ))}
+            </ol>
+          </section>
+        )}
+      </div>
+    </div>
+  </article>
+</BaseLayout>

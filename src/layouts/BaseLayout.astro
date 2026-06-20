@@ -1,0 +1,67 @@
+---
+import { site } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  image?: string;
+}
+
+const {
+  title = site.title,
+  description = site.description,
+  canonicalPath = '/',
+  image = '/images/hero-nails.png'
+} = Astro.props;
+
+const canonicalUrl = new URL(canonicalPath, site.url).toString();
+---
+
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={new URL(image, site.url).toString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Beautifill by Jup home">
+        <span class="brand-main">Beautifill</span>
+        <span class="brand-sub">by Jup</span>
+      </a>
+      <nav class="nav" aria-label="หลัก">
+        {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <a class="header-action" href="/topics/salon-checklist">เริ่มจากคำถามของคุณ</a>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="footer">
+      <div>
+        <a class="brand footer-brand" href="/">
+          <span class="brand-main">Beautifill</span>
+          <span class="brand-sub">by Jup</span>
+        </a>
+        <p>บทความเล็บที่ช่วยให้เลือกจากชีวิตจริง ไม่ใช่จากรูปสวยอย่างเดียว</p>
+      </div>
+      <div class="footer-links">
+        <a href="/blogs/news/how-to-choose-gel-nails-for-daily-life">บทความแนะนำ</a>
+        <a href="/topics/price-and-value">ราคาและความคุ้มค่า</a>
+        <a href="/about-jup">เกี่ยวกับ Jup</a>
+      </div>
+    </footer>
+  </body>
+</html>

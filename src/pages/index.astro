@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { topicLabels } from '../data/site';
+
+const articles = (await getCollection('articles')).sort(
+  (a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt)
+);
+const latest = articles.slice(0, 4);
+const topicEntries = Object.entries(topicLabels);
+---
+
+<BaseLayout canonicalPath="/">
+  <section class="hero">
+    <div class="hero-copy">
+      <h1>คำตอบเรื่องเล็บที่ช่วยให้คุณตัดสินใจได้มั่นใจ</h1>
+      <p>
+        คู่มือดูแลเล็บเจล เลือกสีและทรงที่เหมาะกับคุณ เล็บพังต้องทำยังไง คุ้มค่ากับราคาหรือไม่
+        และวิธีเลือกร้านที่ไว้ใจได้
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="/blogs/news/how-to-choose-gel-nails-for-daily-life">อ่านบทความแรก</a>
+        <a class="button secondary" href="/topics/nail-damage">เริ่มจากปัญหาของคุณ</a>
+      </div>
+      <ul class="trust-list" aria-label="หลักการเขียนบทความ">
+        <li>อ้างอิงข้อมูลจริงเมื่อเป็นเรื่องสุขภาพหรือความปลอดภัย</li>
+        <li>มี Jup decision logic เพื่อช่วยตัดสินใจ</li>
+        <li>สรุปเป็นคำถามที่ควรถามก่อนทำเล็บ</li>
+      </ul>
+    </div>
+    <div class="hero-media">
+      <img src="/images/hero-nails.png" alt="เล็บเจลสีชมพูบนมือผู้หญิงในแสงนุ่ม" />
+    </div>
+  </section>
+
+  <section class="section latest-section">
+    <div class="section-heading">
+      <h2>บทความล่าสุด</h2>
+      <a href="/topics/gel-nails">ดูหัวข้อทั้งหมด</a>
+    </div>
+    <div class="article-grid">
+      {latest.map((article) => (
+        <article class="article-card">
+          <a href={`/blogs/news/${article.data.shopifyHandle}`}>
+            <div class="thumb" style={`background-image: url(${article.data.heroImage});`}></div>
+            <div class="article-card-body">
+              <p class="meta">{topicLabels[article.data.topic]?.title ?? article.data.topic} · {article.data.funnelStage}</p>
+              <h3>{article.data.title}</h3>
+              <p>{article.data.description}</p>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section topics-section">
+    <h2>เลือกอ่านตามหัวข้อที่คุณสนใจ</h2>
+    <div class="topic-grid">
+      {topicEntries.map(([slug, topic]) => (
+        <a class="topic-card" href={`/topics/${slug}`}>
+          <div class="topic-image" style={`background-image: url(${topic.image});`}></div>
+          <h3>{topic.title}</h3>
+          <p>{topic.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="about-strip">
+    <div class="about-copy">
+      <h2>เขียนโดย Jup และทีม Beautifill</h2>
+      <p>
+        เป้าหมายของเว็บนี้คือช่วยให้คุณเลือกเล็บจากมือ งาน งบประมาณ ความสบาย และความเสี่ยง
+        ไม่ใช่เลือกจากรูปสวยเพียงอย่างเดียว
+      </p>
+      <a class="button primary" href="/about-jup">รู้จัก Jup เพิ่มเติม</a>
+    </div>
+    <div class="about-points">
+      <p>ประสบการณ์จริงจากงานหน้าร้าน</p>
+      <p>อ้างอิงแหล่งข้อมูลเมื่อเป็นประเด็นสุขภาพ</p>
+      <p>อธิบายให้เข้าใจง่าย ทำตามได้จริง</p>
+    </div>
+  </section>
+</BaseLayout>

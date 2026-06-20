@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { topicLabels } from '../../data/site';
+
+export async function getStaticPaths() {
+  return Object.keys(topicLabels).map((topic) => ({ params: { topic } }));
+}
+
+const { topic } = Astro.params;
+const topicData = topicLabels[topic] ?? { title: topic, description: '', image: '/images/hero-nails.png' };
+const articles = (await getCollection('articles'))
+  .filter((article) => article.data.topic === topic)
+  .sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt));
+---
+
+<BaseLayout
+  title={`${topicData.title} | Beautifill by Jup`}
+  description={topicData.description}
+  canonicalPath={`/topics/${topic}`}
+>
+  <section class="topic-hero">
+    <div>
+      <h1>{topicData.title}</h1>
+      <p>{topicData.description}</p>
+    </div>
+    <div class="topic-hero-image" style={`background-image: url(${topicData.image});`}></div>
+  </section>
+
+  <section class="section">
+    {articles.length === 0 ? (
+      <div class="empty-state">
+        <h2>ยังไม่มีบทความในหัวข้อนี้</h2>
+        <p>หัวข้อนี้ถูกเตรียมไว้สำหรับการขยายเว็บในรอบถัดไป</p>
+      </div>
+    ) : (
+      <div class="article-list">
+        {articles.map((article) => (
+          <article class="article-row">
+            <a href={`/blogs/news/${article.data.shopifyHandle}`}>
+              <div class="row-thumb" style={`background-image: url(${article.data.heroImage});`}></div>
+              <div>
+                <p class="meta">{article.data.funnelStage} · {article.data.contentType}</p>
+                <h2>{article.data.title}</h2>
+                <p>{article.data.description}</p>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>
