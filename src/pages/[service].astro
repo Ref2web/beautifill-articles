@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { serviceLabels, topicLabels } from '../data/site';
+
+export async function getStaticPaths() {
+  return Object.keys(serviceLabels).map((service) => ({ params: { service } }));
+}
+
+const { service } = Astro.params;
+const serviceData = serviceLabels[service];
+const articles = (await getCollection('articles'))
+  .filter((article) => article.data.category === serviceData.category)
+  .sort((a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt));
+---
+
+<BaseLayout
+  title={`${serviceData.title} | Beautifill by Jup`}
+  description={serviceData.description}
+  canonicalPath={`/${service}/`}
+  image={serviceData.image}
+>
+  <section class="topic-hero service-hero" style={`--service-color: ${serviceData.color};`}>
+    <div>
+      <p class="meta">หมวดบริการ</p>
+      <h1>{serviceData.title}</h1>
+      <p>{serviceData.description}</p>
+    </div>
+    <div class="topic-hero-image service-hero-image" style={`background-image: url(${serviceData.image});`}></div>
+  </section>
+
+  <section class="section">
+    {articles.length === 0 ? (
+      <div class="empty-state">
+        <h2>{serviceData.emptyTitle}</h2>
+        <p>{serviceData.emptyDescription}</p>
+      </div>
+    ) : (
+      <div class="article-list">
+        {articles.map((article) => (
+          <article class="article-row">
+            <a href={`/blogs/news/${article.data.shopifyHandle}`}>
+              <div class="row-thumb" style={`background-image: url(${article.data.heroImage});`}></div>
+              <div>
+                <p class="meta">{topicLabels[article.data.topic]?.title ?? article.data.topic} · {article.data.funnelStage}</p>
+                <h2>{article.data.title}</h2>
+                <p>{article.data.description}</p>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
+</BaseLayout>

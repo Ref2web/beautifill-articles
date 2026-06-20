@@ -41,10 +41,15 @@ const canonicalUrl = new URL(canonicalPath, site.url).toString();
         <span class="brand-main">Beautifill</span>
         <span class="brand-sub">by Jup</span>
       </a>
-      <nav class="nav" aria-label="หลัก">
-        {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
-      </nav>
-      <a class="header-action" href="/topics/salon-checklist">เริ่มจากคำถามของคุณ</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+        <span class="menu-icon" aria-hidden="true"></span>
+        <span>เมนู</span>
+      </button>
+      <div id="site-menu" class="site-menu">
+        <nav class="nav" aria-label="หลัก">
+          {site.nav.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+      </div>
     </header>
     <main>
       <slot />
@@ -55,13 +60,30 @@ const canonicalUrl = new URL(canonicalPath, site.url).toString();
           <span class="brand-main">Beautifill</span>
           <span class="brand-sub">by Jup</span>
         </a>
-        <p>บทความความงามที่ช่วยให้เลือกจากข้อมูลจริง ไม่ใช่จากรูปสวยอย่างเดียว</p>
+        <p>บทความด้านการสักคิ้ว สักปาก และทำเล็บ</p>
       </div>
       <div class="footer-links">
-        <a href="/blogs/news/how-to-choose-gel-nails-for-daily-life">บทความแนะนำ</a>
-        <a href="/topics/price-and-value">ราคาและความคุ้มค่า</a>
-        <a href="/about-jup">เกี่ยวกับ Jup</a>
+        <a href="/nails/">ทำเล็บ</a>
+        <a href="/eyebrow-tattoo/">สักคิ้ว</a>
+        <a href="/lip-tattoo/">สักปาก</a>
+        <a href="/about-jup">เกี่ยวกับเรา</a>
       </div>
     </footer>
+    <script>
+      const menuButton = document.querySelector('.menu-toggle');
+      const siteMenu = document.querySelector('.site-menu');
+
+      menuButton?.addEventListener('click', () => {
+        const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!isOpen));
+        siteMenu?.classList.toggle('is-open', !isOpen);
+      });
+
+      siteMenu?.addEventListener('click', (event) => {
+        if (!(event.target instanceof HTMLAnchorElement)) return;
+        menuButton?.setAttribute('aria-expanded', 'false');
+        siteMenu.classList.remove('is-open');
+      });
+    </script>
   </body>
 </html>
