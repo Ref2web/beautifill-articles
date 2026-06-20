@@ -3,7 +3,7 @@ export const site = {
   title: 'Beautifill by Jup | บทความเล็บที่ช่วยให้เลือกได้มั่นใจ',
   description:
     'บทความเรื่องเล็บจาก Beautifill by Jup สำหรับคนที่อยากเลือกเล็บให้เหมาะกับชีวิตจริง งาน งบประมาณ และความเสี่ยงก่อนทำ',
-  url: 'https://www.beautifillbyjup.com',
+  url: 'https://articles.beautifill.site',
   nav: [
     { href: '/', label: 'บทความ' },
     { href: '/topics/gel-nails', label: 'เล็บเจล' },
