@@ -99,7 +99,7 @@ Keep article slugs stable. If a Shopify URL changes, set `migration.redirectNeed
 Website articles must follow the existing project strategy for the matching service:
 
 - Use Jup decision logic, not generic beauty writing.
-- Use `[Jup POV]` when the real Jup opinion has not been provided.
+- If the real Jup opinion has not been provided, keep `jupPovStatus: "needs-input"` and write a customer-facing `## วิธีคิดก่อนตัดสินใจ` section instead of showing an internal placeholder.
 - Health, chemical, hygiene, irritation, allergy, infection, healing, pigment, or damage claims require sources.
 - Do not diagnose medical conditions or make certainty claims beyond the source.
 - Every article should include short-form repurpose ideas.

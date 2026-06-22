@@ -202,7 +202,7 @@ h6 {
   max-width: 760px;
   margin: 0;
   font-size: clamp(3.1rem, 5vw, 5.25rem);
-  line-height: 1.04;
+  line-height: 1.5;
   letter-spacing: 0;
 }
 

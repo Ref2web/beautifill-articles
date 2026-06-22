@@ -7,6 +7,9 @@ const articles = (await getCollection('articles')).sort(
   (a, b) => Date.parse(b.data.publishedAt) - Date.parse(a.data.publishedAt)
 );
 const latest = articles.slice(0, 3);
+const serviceColorByCategory = Object.fromEntries(
+  Object.values(serviceLabels).map((service) => [service.category, service.color])
+);
 const serviceCategories = [
   { id: 'nails', ...serviceLabels.nails, shortDescription: 'เลือกสี ทรง และความยาว', href: '/nails/' },
   {
@@ -34,7 +37,7 @@ const serviceCategories = [
       </p>
       <div class="hero-actions">
         <a class="button primary" href="#latest">เริ่มอ่านบทความ</a>
-        <a class="button secondary" href="/about-jup">รู้จัก Jup</a>
+        <a class="button secondary" href="/about-jup">เกี่ยวกับเรา</a>
       </div>
     </div>
     <div class="home-hero-visual" aria-hidden="true">
@@ -80,7 +83,7 @@ const serviceCategories = [
         <article class="latest-row">
           <a href={`/blogs/news/${article.data.shopifyHandle}`}>
             <span class="row-topic">
-              <span class="service-dot nail-dot"></span>
+              <span class="service-dot" style={`--service-color: ${serviceColorByCategory[article.data.category]};`}></span>
               {topicLabels[article.data.topic]?.title ?? article.data.topic}
             </span>
             <h3>{article.data.title}</h3>

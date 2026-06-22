@@ -79,5 +79,25 @@ export const topicLabels: Record<string, { title: string; description: string; i
     title: 'เลือกร้านทำเล็บ',
     description: 'เช็กมาตรฐาน กระบวนการ และคำถามที่ควรถามก่อนตัดสินใจ',
     image: '/images/thumbnail-nail-tools.webp'
+  },
+  'brow-shape': {
+    title: 'เลือกทรงคิ้ว',
+    description: 'เข้าใจว่าทรงคิ้วควรดูจากรูปหน้า คิ้วเดิม และลุคที่อยากได้',
+    image: '/images/category-brows.webp'
+  },
+  'natural-brows': {
+    title: 'คิ้วธรรมชาติ',
+    description: 'ดูว่าคิ้วธรรมชาติควรพอดีกับหน้า ไม่ใช่แค่ทำให้จางที่สุด',
+    image: '/images/category-brows.webp'
+  },
+  'lip-base-color': {
+    title: 'พื้นปากเดิม',
+    description: 'ก่อนสักปากควรดูพื้นปากเดิมและความคาดหวังของสีหลังทำ',
+    image: '/images/category-lips.webp'
+  },
+  'lip-color-choice': {
+    title: 'เลือกสีสักปาก',
+    description: 'เลือกสีปากจากหน้าจริง ผิวจริง และชีวิตประจำวันที่ต้องใช้',
+    image: '/images/category-lips.webp'
   }
 };

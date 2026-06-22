@@ -64,8 +64,12 @@ for (const file of fs.readdirSync(root).filter((name) => name.endsWith('.md'))) 
     errors.push(`${file}: shortFormRepurpose must include at least 3 ideas`);
   }
 
-  if (data.jupPovStatus === 'needs-input' && !content.includes('[Jup POV]')) {
-    errors.push(`${file}: needs-input article must include [Jup POV] placeholder`);
+  if (content.includes('[Jup POV]')) {
+    errors.push(`${file}: remove [Jup POV] placeholder from customer-facing article body`);
+  }
+
+  if (data.jupPovStatus === 'needs-input' && !content.includes('## วิธีคิดก่อนตัดสินใจ')) {
+    errors.push(`${file}: needs-input article must include a วิธีคิดก่อนตัดสินใจ section`);
   }
 }
 
